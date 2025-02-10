@@ -141,7 +141,7 @@ SELECT nome, cargo, data_admisao FROM funcionarios WHERE data_admisao < '2023-03
   DELETE FROM projetos WHERE nome_projeto = 'Relatório Financeiro';
   ````
 
-Desafio Extra
+### Desafio Extra
 - Liste os funcionários que possuem salário entre R$ 3.000,00 e R$ 5.000,00
 
   ````sql
