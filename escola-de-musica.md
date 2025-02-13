@@ -168,6 +168,36 @@ CREATE TABLE alunos_instrumentos (
    PRIMARY KEY (aluno_id, instrumento_id)
 );
 ````
+## Exemplos de Consultas ao Banco de Dados
+Quais alunos estão aprendendo piano?
+````sql
+SELECT a.nome 
+FROM alunos a
+JOIN instrumentos i ON a.instrumento_id = i.id
+WHERE i.nome = 'Piano';
 
+````
+Quais aulas um professor específico está ministrando?
+````sql
+SELECT a.data_hora, a.duracao, al.nome AS aluno
+FROM aulas a
+JOIN professores p ON a.professor_id = p.id
+JOIN alunos al ON a.aluno_id = al.id
+WHERE p.nome = 'João Silva';
+````
+ Quantos alunos estão aprendendo cada instrumento?
+ ````sql
+SELECT i.nome AS instrumento, COUNT(a.id) AS total_alunos
+FROM instrumentos i
+LEFT JOIN alunos a ON i.id = a.instrumento_id
+GROUP BY i.nome;
+
+````
+ Quais são os contatos dos professores?
+ ````sql
+SELECT nome, email, telefone 
+FROM professores;
+
+````
 
   
