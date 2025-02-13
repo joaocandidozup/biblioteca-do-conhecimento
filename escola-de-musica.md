@@ -19,16 +19,13 @@ As entidades principais para um banco de dados de uma escola de música podem se
 ### Passo 2: Listar os Atributos de Cada Entidade
 Alunos
 ````yml
-id: (chave primária)
 nome: (nome completo do aluno)
 data_nascimento: (data de nascimento)
 email: (e-mail do aluno)
 telefone: (telefone de contato)
-instrumento_id: (instrumento que o aluno está aprendendo, chave estrangeira)
 ````
 Professores
 ````yml
-id: (chave primária)
 nome: (nome completo do professor)
 especialidade: (instrumento ou área de especialização)
 email: (e-mail do professor)
@@ -36,16 +33,23 @@ telefone: (telefone de contato)
 ````
 Aulas
 ````yml
-id: (chave primária)
 data_hora: (data e hora da aula)
 duracao: (duração da aula em minutos)
-professor_id: (chave estrangeira para o professor que ministra a aula)
-aluno_id: (chave estrangeira para o aluno que participa da aula)
 ````
 Instrumentos
 ````yml
-id: (chave primária)
 nome: (nome do instrumento)
+````
+### Passo 3: Definir os Relacionamentos Entre as Entidades
+````yml
+Alunos e Instrumentos: Um aluno pode aprender varios instrumentos e um instrumento pode ser aprendido por vários alunos. 
+(Relacionamento N:N)
+
+Professores e Aulas: Um professor pode ministrar várias aulas, mas cada aula é ministrada por apenas um professor.
+(Relacionamento 1:N)
+
+Alunos e Aulas: Um aluno pode participar de várias aulas, mas cada aula é associada a apenas um aluno.
+(Relacionamento 1:N)
 ````
 
 
