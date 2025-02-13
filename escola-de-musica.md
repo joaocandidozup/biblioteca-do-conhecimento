@@ -168,7 +168,51 @@ CREATE TABLE alunos_instrumentos (
    PRIMARY KEY (aluno_id, instrumento_id)
 );
 ````
+### Passo 8: Inserindo Dados nas Tabelas
+Inserindo dados na tabela de Instrumentos
+````sql
+INSERT INTO instrumentos (nome) VALUES 
+('Violão'),
+('Piano'),
+('Bateria'),
+('Guitarra'),
+('Flauta');
+````
+Inserindo dados na tabela de Alunos
+````sql
+INSERT INTO alunos (nome, data_nascimento, email, telefone, instrumento_id) VALUES 
+('João Silva', '2005-03-15', 'joao.silva@email.com', '11999999999', 1),
+('Maria Oliveira', '2007-07-22', 'maria.oliveira@email.com', '11988888888', 2),
+('Carlos Santos', '2006-11-10', 'carlos.santos@email.com', '11977777777', 3),
+('Ana Costa', '2008-01-05', 'ana.costa@email.com', '11966666666', 4);
+````
+Inserindo dados na tabela de Professores
+````sql
+INSERT INTO professores (nome, especialidade, email, telefone) VALUES 
+('Pedro Almeida', 'Cordas', 'pedro.almeida@email.com', '11955555555'),
+('Fernanda Lima', 'Teclas', 'fernanda.lima@email.com', '11944444444'),
+('Rafael Souza', 'Percussão', 'rafael.souza@email.com', '11933333333');
+````
+Inserindo dados na tabela de Aulas
+````sql
+INSERT INTO aulas (data_hora, duracao, professor_id, aluno_id) VALUES 
+('2023-10-15 10:00:00', 60, 1, 1),
+('2023-10-16 14:00:00', 45, 2, 2),
+('2023-10-17 16:00:00', 90, 3, 3),
+('2023-10-18 09:00:00', 60, 1, 4);
+````
+Inserindo dados na tabela intermediária Alunos_Instrumentos
+````sql
+INSERT INTO alunos_instrumentos (aluno_id, instrumento_id) VALUES 
+(1, 1),
+(2, 2), 
+(3, 3), 
+(4, 4), 
+(1, 3), 
+(2, 4); 
+````
 ## Exemplos de Consultas ao Banco de Dados
+
 Quais alunos estão aprendendo piano?
 ````sql
 SELECT a.nome 
@@ -183,7 +227,7 @@ SELECT a.data_hora, a.duracao, al.nome AS aluno
 FROM aulas a
 JOIN professores p ON a.professor_id = p.id
 JOIN alunos al ON a.aluno_id = al.id
-WHERE p.nome = 'João Silva';
+WHERE p.nome = 'Pedro Almeida';
 ````
  Quantos alunos estão aprendendo cada instrumento?
  ````sql
