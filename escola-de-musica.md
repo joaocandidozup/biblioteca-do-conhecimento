@@ -85,5 +85,26 @@ nome
 ````
 Alunos_Instrumentos (tabela intermediaria para o relacionamento N:N)
 
+### Passo 5: Criar uma nova database e um novo usuario
+verificar todos os usuarios existentes
+````sql
+\du
+````
+criar um novo usuario
+```sql
+CREATE USER usuario_escola WITH PASSWORD '123';
+````
+criar o banco de dados escola de musica
+````sql
+CREATE DATABASE escola_de_musica;
+````
+Conceda permissões ao novo usuário no banco de dados criado:
+````sql
+GRANT ALL PRIVILEGES ON DATABASE escola_de_musica TO usuario_escola;
+````
+
+   
+
+
 
   
