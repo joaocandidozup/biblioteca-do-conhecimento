@@ -20,20 +20,20 @@ As entidades principais para um banco de dados de uma escola de música podem se
 Alunos
 ````yml
 nome: (nome completo do aluno)
-data_nascimento: (data de nascimento)
+data de nascimento: (data de nascimento do aluno)
 email: (e-mail do aluno)
-telefone: (telefone de contato)
+telefone: (telefone de contato do aluno)
 ````
 Professores
 ````yml
 nome: (nome completo do professor)
 especialidade: (instrumento ou área de especialização)
 email: (e-mail do professor)
-telefone: (telefone de contato)
+telefone: (telefone de contato do professor)
 ````
 Aulas
 ````yml
-data_hora: (data e hora da aula)
+data e hora: (data e hora da aula)
 duracao: (duração da aula em minutos)
 ````
 Instrumentos
@@ -51,6 +51,39 @@ Professores e Aulas: Um professor pode ministrar várias aulas, mas cada aula é
 Alunos e Aulas: Um aluno pode participar de várias aulas, mas cada aula é associada a apenas um aluno.
 (Relacionamento 1:N)
 ````
+### Passo 4: Criar o Modelo Lógico
+Alunos
+````yml
+id (chave primária)
+nome 
+data_nascimento 
+email 
+telefone 
+instrumento_id (chave estrangeira)
+````
+Professores
+````yml
+id (chave primária)
+nome 
+especialidade 
+email 
+telefone 
+
+````
+Aulas
+````yml
+id (chave primária)
+data_hora 
+duracao 
+professor_id (chave estrangeira )
+aluno_id (chave estrangeira )
+````
+Instrumentos
+````yml
+id (chave primária)
+nome 
+````
+Alunos_Instrumentos (tabela intermediaria para o relacionamento N:N)
 
 
   
