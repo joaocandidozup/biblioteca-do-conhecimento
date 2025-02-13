@@ -16,5 +16,37 @@ As entidades principais para um banco de dados de uma escola de música podem se
 - Aulas
 - Instrumentos
 
+### Passo 2: Listar os Atributos de Cada Entidade
+Alunos
+````yml
+id: (chave primária)
+nome: (nome completo do aluno)
+data_nascimento: (data de nascimento)
+email: (e-mail do aluno)
+telefone: (telefone de contato)
+instrumento_id: (instrumento que o aluno está aprendendo, chave estrangeira)
+````
+Professores
+````yml
+id: (chave primária)
+nome: (nome completo do professor)
+especialidade: (instrumento ou área de especialização)
+email: (e-mail do professor)
+telefone: (telefone de contato)
+````
+Aulas
+````yml
+id: (chave primária)
+data_hora: (data e hora da aula)
+duracao: (duração da aula em minutos)
+professor_id: (chave estrangeira para o professor que ministra a aula)
+aluno_id: (chave estrangeira para o aluno que participa da aula)
+````
+Instrumentos
+````yml
+id: (chave primária)
+nome: (nome do instrumento)
+````
+
 
   
