@@ -85,26 +85,89 @@ nome
 ````
 Alunos_Instrumentos (tabela intermediaria para o relacionamento N:N)
 
-### Passo 5: Criar uma nova database e um novo usuario
+### Passo 5: Criar o Banco de Dados
+
+Crie um banco de dados chamado techcorp
+````sql
+CREATE DATABASE escola_de_musica;
+````
+Acesse o banco de dados
+````sql
+\c escola_de_musica;
+````
+
+### Passo 6: Criar um novo usuario
 verificar todos os usuarios existentes
 ````sql
 \du
 ````
-criar um novo usuario
+Criar um novo usuario
 ```sql
-CREATE USER usuario_escola WITH PASSWORD '123';
+CREATE USER usuario1 WITH PASSWORD '123';
 ````
-criar o banco de dados escola de musica
+Conceder permissão para o usuario criar tabelas
 ````sql
-CREATE DATABASE escola_de_musica;
+GRANT CREATE ON SCHEMA public TO usuario1;
 ````
-Conceda permissões ao novo usuário no banco de dados criado:
+Garantir que o usuário possa se conectar ao banco de dados
 ````sql
-GRANT ALL PRIVILEGES ON DATABASE escola_de_musica TO usuario_escola;
+GRANT CONNECT ON DATABASE escola_de_musica TO usuario1;
 ````
+Acessar o banco de dados com o novo usuario
+```sql
+\c escola_de_musica usuario1;
+````
+### Passo 7: Implementar as Tabelas no PostgreSQL
+Tabela de Instrumentos
+````sql
+CREATE TABLE instrumentos (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL
+);
 
-   
+````
+Tabela de Alunos
+````sql
+CREATE TABLE alunos (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    telefone VARCHAR(15),
+    instrumento_id INT REFERENCES instrumentos(id)
+);
+````
+ Tabela de Professores
+````sql
+CREATE TABLE professores (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    especialidade VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    telefone VARCHAR(15)
+);
 
+````
+Tabela de Aulas
+```sql
+CREATE TABLE aulas (
+    id SERIAL PRIMARY KEY,
+    data_hora TIMESTAMP NOT NULL,
+    duracao INT NOT NULL,
+    professor_id INT REFERENCES professores(id),
+    aluno_id INT REFERENCES alunos(id)
+);
+
+````
+ Tabela intermediária para o relacionamento N:N entre Alunos e Instrumentos  
+ 
+````sql
+CREATE TABLE alunos_instrumentos (
+   aluno_id INT NOT NULL REFERENCES alunos(id),
+   instrumento_id INT NOT NULL REFERENCES instrumentos(id),
+   PRIMARY KEY (aluno_id, instrumento_id)
+);
+````
 
 
   
