@@ -7,3 +7,14 @@ Dica: Pense em perguntas como:<br>
 O que precisamos saber sobre os alunos?<br>
 Como registramos as aulas?<br>
 Como conectamos os professores às aulas?
+----
+
+### Passo 1: Identificar as Entidades Principais
+As entidades principais para um banco de dados de uma escola de música podem ser:
+- alunos
+- Professores
+- Aulas
+- Instrumentos
+
+
+  
